@@ -1,0 +1,45 @@
+server:
+  port: 9003
+
+spring:
+  application:
+    name: account-service
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        # Nacos 服务发现与注册配置
+        server-addr: 127.0.0.1:8848
+        # 注册到 nacos 的指定 namespace，默认为 public
+        namespace: public
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/seata?characterEncoding=utf-8
+    username: root
+    password: root
+mybatis-plus:
+  global-config:
+    banner: false
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
+    map-underscore-to-camel-case: true # 开启驼峰
+  type-aliases-package: com.seata.account.entity  #定义所有操作类的别名所在包
+  mapper-locations: classpath:mapper/*Mapper.xml
+
+# seata config
+seata:
+  enabled: true
+  application-id: account-service
+  tx-service-group: my_test_tx_group # 事务群组（可以每个应用单独取名，也可以使用相同名字，独立起名需要配置nacos）
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace:
+      cluster: default
+  config:
+    type: nacos
+    nacos:
+      namespace:
+      server-addr: 127.0.0.1:8848

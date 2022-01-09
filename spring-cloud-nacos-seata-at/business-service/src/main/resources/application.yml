@@ -1,0 +1,31 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: business-service
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        # Nacos 服务发现与注册配置
+        server-addr: 127.0.0.1:8848
+        # 注册到 nacos 的指定 namespace，默认为 public
+        namespace: public
+# seata config
+seata:
+  enabled: true
+  application-id: business-service
+  tx-service-group: my_test_tx_group # 事务群组（可以每个应用单独取名，也可以使用相同名字，独立起名需要配置nacos）
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace:
+      cluster: default
+  config:
+    type: nacos
+    nacos:
+      namespace:
+      server-addr: 127.0.0.1:8848
