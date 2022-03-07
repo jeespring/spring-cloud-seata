@@ -1,0 +1,44 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: order-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/spring-cloud-seata-eureka?characterEncoding=utf-8
+    username: root
+    password: root
+
+eureka:
+  instance:
+    instance-id: order-service
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+
+mybatis-plus:
+  global-config:
+    banner: false
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
+    map-underscore-to-camel-case: true # 开启驼峰
+  type-aliases-package: com.seata.order.entity  #定义所有操作类的别名所在包
+  mapper-locations: classpath:mapper/*Mapper.xml
+
+# Seata Config
+seata:
+  application-id: order-service
+  tx-service-group: my_test_tx_group
+  service:
+    vgroup-mapping:
+      # 此处配置对应Server端配置registry.eureka.application的值
+      my_test_tx_group: default
+  registry:
+    type: eureka
+    eureka:
+      service-url: http://localhost:8761/eureka
+      weight: 1
