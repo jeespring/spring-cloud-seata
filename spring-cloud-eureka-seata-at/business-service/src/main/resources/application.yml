@@ -1,0 +1,29 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: business-service
+
+eureka:
+  instance:
+    instance-id: business-service
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+
+# Seata Config
+seata:
+  application-id: business-service
+  tx-service-group: my_test_tx_group
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default # 此处配置对应Server端配置registry.eureka.application的值
+  registry:
+    type: eureka
+    eureka:
+      service-url: http://localhost:8761/eureka
+      weight: 1

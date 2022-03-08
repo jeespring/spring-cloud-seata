@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seata.storage.mapper.StorageMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.seata.storage.entity.Storage">
+        <id column="id" property="id" />
+        <result column="commodity_code" property="commodityCode" />
+        <result column="commodity_name" property="commodityName" />
+        <result column="count" property="count" />
+        <result column="price" property="price" />
+    </resultMap>
+
+    <update id="deductStorage">
+        update t_storage set count = count - #{count}
+        where commodity_code = #{commodityCode}
+    </update>
+</mapper>
