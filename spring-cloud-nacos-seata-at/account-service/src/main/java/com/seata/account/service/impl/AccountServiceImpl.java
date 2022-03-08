@@ -32,7 +32,7 @@ public class AccountServiceImpl implements AccountService {
             throw new RuntimeException("[账户服务]>------>扣减账户异常");
         }
         accountMapper.deductAccount(userId, money);
-        log.info("[账户服务]>------>扣减账户失败");
+        log.info("[账户服务]>------>扣减账户结束");
         return money;
     }
 }

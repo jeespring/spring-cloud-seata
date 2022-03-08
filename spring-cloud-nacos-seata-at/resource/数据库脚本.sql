@@ -122,7 +122,7 @@ CREATE TABLE `t_storage`  (
 -- ----------------------------
 -- Records of t_storage
 -- ----------------------------
-INSERT INTO `t_storage` VALUES (1, '10001', '苹果手机', 100, 100);
+INSERT INTO `t_storage` VALUES (1, '10001', '苹果手机', 100, 1000);
 
 -- ----------------------------
 -- Table structure for undo_log
