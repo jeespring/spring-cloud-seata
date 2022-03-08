@@ -32,6 +32,7 @@
         <fastjson.version>1.2.76</fastjson.version>
         <lombok.version>1.18.20</lombok.version>
         <apache.common.version>3.12.0</apache.common.version>
+        <persistence.version.version>1.0.2</persistence.version.version>
     </properties>
 
     <dependencyManagement>
@@ -96,6 +97,12 @@
                 <version>${apache.common.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>persistence-api</artifactId>
+                <version>${persistence.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -119,11 +126,6 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 
