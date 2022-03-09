@@ -32,7 +32,7 @@
         <fastjson.version>1.2.76</fastjson.version>
         <lombok.version>1.18.20</lombok.version>
         <apache.common.version>3.12.0</apache.common.version>
-        <persistence.version.version>1.0.2</persistence.version.version>
+        <persistence.version>1.0.2</persistence.version>
     </properties>
 
     <dependencyManagement>
